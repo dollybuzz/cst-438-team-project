@@ -1,4 +1,4 @@
-package domain;
+package cst438.domain;
 
 public class Country {
 
