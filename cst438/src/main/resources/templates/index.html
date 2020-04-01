@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html xmls:th="www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Landing Page</title>
+	<meta charset="ISO-8859-1">
+	<title>COVID19 Symptom Checker</title>
 </head>
 <body>
-	<h1>Landing page</h1>
+	<h1>covid 19 symptom checker... todo ...</h1>
+
+	<!-- Success block -->
+	<div th:if="${success == true}">
+		<form action="/results" method="post">
+			<!-- Country -->
+			<div>
+				<select name="country">
+		    		<option value=null>Select Country</option>
+		    		<option th:each="country : ${countries}" th:value="${country.getCode()}" th:text="${country.getName()}"></option>
+		    	</select>
+			</div>
+
+			<!-- City -->
+			<div>
+				<select name="city">
+		    		<option value=null>Select City</option>
+		    		<option th:each="city : ${cities}" th:value="${city.getName()}" th:text="${city.getName()}"></option>
+		    	</select>
+			</div>
+
+			<button type="submit">See Results</button>
+		</form>
+	</div>
+
+	<!-- Error block -->
+	<div th:if="${success == false}">
+		<p>Error loading data</p>
+	</div>
 </body>
 </html>
