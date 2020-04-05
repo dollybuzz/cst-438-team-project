@@ -93,6 +93,12 @@ public class UserSymptomList {
 		this.tenthSymptomIsActive = tenthSymptomIsActive;
 	}
 
+	public long getId() {
+		return this.id;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		return "{"

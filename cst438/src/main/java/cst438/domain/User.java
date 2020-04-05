@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Users")
@@ -18,12 +19,39 @@ public class User {
 	@Column(name="district")
 	private String district;
 	@Column(name="symptomListId")
-	private int symptomListId;
+	private long symptomListId;
+	@Column(name="age")
+	private long age;
+	
+	@Transient
+	private UserSymptomList symptoms;
 	
 	
 	
+	public User(String countryCode, String district, UserSymptomList symptoms, long age) {
+		super();
+		this.countryCode = countryCode;
+		this.district = district;
+		this.symptoms = symptoms;
+		this.symptomListId = symptoms.getId();
+	}
+
+
+
 	public String getCountryCode() {
 		return countryCode;
+	}
+
+
+
+	public long getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(long age) {
+		this.age = age;
 	}
 
 
@@ -46,17 +74,21 @@ public class User {
 
 
 
-	public int getSymptomListId() {
-		return symptomListId;
+
+	public UserSymptomList getSymptoms() {
+		return symptoms;
 	}
 
 
 
-	public void setSymptomListId(int symptomListId) {
-		this.symptomListId = symptomListId;
+	public void setSymptoms(UserSymptomList symptoms) {
+		this.symptoms = symptoms;
 	}
 
 
+	public long getId() {
+		return this.id;
+	}
 
 	@Override
 	public String toString() {
