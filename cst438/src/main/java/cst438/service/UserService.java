@@ -4,15 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cst438.domain.Country;
-import cst438.domain.CountryRepository;
+import cst438.domain.User;
+import cst438.domain.UserRepository;
+
 
 public class UserService {
 
 	@Autowired
-	private CountryRepository countryRepository;
+	private UserRepository userRepository;
 	
-	public List<Country> getCountries() {
-		return countryRepository.findAllByOrderByNameAsc();
+	public List<User> getUsers() {
+		return userRepository.findAllByOrderByIdAsc();
 	}
 }
