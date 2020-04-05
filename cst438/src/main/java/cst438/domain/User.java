@@ -64,7 +64,8 @@ public class User {
 				+ "id: " + id
 				+ "coutryCode: " + countryCode
 				+ "district: " + district
-				+ "symptomListId: " + symptomListId;
+				+ "symptomListId: " + symptomListId
+				+ "}";
 	}
 	
 	
