@@ -1,4 +1,87 @@
 body, html {
 	width: 100%;
 	height: 100%;
+	text-align: center;
+	background: #003B5C;
 }
+
+h1 {
+	font-size: 24px;
+    font-weight: 300;
+}
+
+h2 {
+	font-size: 36px;
+    font-weight: 400;
+}
+
+.header-tag {
+	font-weight: 500;
+	color: #003B5C;
+}
+
+.header-divider {
+	font-weight: 400;
+}
+
+.main-container {
+	color: white;
+	padding: 40px;
+}
+
+.paragraph {
+    max-width: 50%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.bold-paragraph {
+	font-weight: 700;
+}
+
+.italicized-paragraph {
+	font-style: italic;
+}
+
+.warning-paragraph {
+	color: red;
+	text-transform: uppercase;
+	margin-bottom: 0;
+	border-top: 1px solid white;
+	padding: 20px 0;
+}
+
+.btn-primary {
+	background: #117BB0;
+}
+
+.btn-secondary {
+	background: #F8F9FA;
+	color: #117BB0;
+}
+
+.btn-container {
+    max-width: 158px;
+    margin: 30px auto;
+}
+
+.btn-disclaimer {
+	margin: 0 2px;
+}
+
+.hidden {
+	display: none;
+}
+
+.shown-block {
+	display: block;
+}
+
+.shown-inline {
+	display: inline;
+}
+
+
+
+
+

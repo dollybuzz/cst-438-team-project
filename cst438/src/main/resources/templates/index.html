@@ -8,35 +8,96 @@
 	<link rel="stylesheet" href="./styles/styles.css">
 	<script src="./js/index.js"></script>
 
-	<title>COVID19 Symptom Checker</title>
+	<title>COVID-19 Symptom Checker</title>
 </head>
 <body>
-	<!-- Success block -->
-	<div th:if="${success == true}">
-		<form action="/results" method="post">
-			<!-- Country -->
-			<div>
-				<select name="country">
-		    		<option value=null>Select Country</option>
-		    		<option th:each="country : ${countries}" th:value="${country.getCode()}" th:text="${country.getName()}"></option>
-		    	</select>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<h1>
+			<span class="header-tag">438</span>
+			Health Center
+			<span class="header-divider">/</span>
+			COVID-19 Symptom Checker
+		</h1>
+	</nav>
+	
+	<div class="main-container">
+		<h2>COVID-19 Resource Center</h2>
+
+		<p class="paragraph">
+			Here at 438 Health Center, we are here for you in these trying times.
+			We are committed to keeping you informed about the COVID-19 pandemic,
+			and are available every day, 24/7 to answer
+			any questions you or your family may have.
+		</p>
+
+		<p class="paragraph bold-paragraph">
+			If you think you or a loved one has been exposed to COVID-19
+			or are experiencing fever, cough or shortness of breath,
+			start with our COVID-19 Symptom Checker or call 555-555-5555.
+			Our symptom checker is the quickest way to find out what to do next.
+		</p>
+
+		<p class="paragraph italicized-paragraph">
+			If you think you’re experiencing an emergency, dial 911.
+		</p>
+		<!-- Success block -->
+		<div th:if="${success == true}">
+			<button class="btn btn-primary" onclick="showDisclaimer()" id="show-disclaimer-button">
+				COVID-19 Symptom Checker
+			</button>
+
+			<div id="disclaimer" class="hidden">
+				<p class="paragraph warning-paragraph">
+					This is a school project for CST 438
+					and is for educational purposes only
+				</p>
+				<p class="paragraph">
+					I understand that the 438 Health Center COVID-19 Symptom Checker
+					should not be used in times when symptoms are urgent. If I 
+					am experiencing life-threatening issues I will immediately 
+					seek help from a health care professional or dial 911. I understand
+					that the 438 Health Center COVID-19 Symptom Checker is for
+					informational purposes only.
+				</p>
+				<div class="row btn-container">
+					<div class="col-xs-6">
+						<button class="btn btn-secondary btn-disclaimer" onclick="disagreeDisclaimer()" id="cancel-disclaimer-button">
+							Cancel
+						</button>
+					</div>
+					<div class="col-xs-6">
+						<button class="btn btn-primary btn-disclaimer" onclick="agreeDisclaimer()" id="agree-disclaimer-button">
+							I Agree
+						</button>
+					</div>
+				</div>
 			</div>
 
-			<!-- City -->
-			<div>
-				<select name="city">
-		    		<option value=null>Select City</option>
-		    		<option th:each="city : ${cities}" th:value="${city.getName()}" th:text="${city.getName()}"></option>
-		    	</select>
-			</div>
-
-			<button type="submit">See Results</button>
-		</form>
-	</div>
-
-	<!-- Error block -->
-	<div th:if="${success == false}">
-		<p>Error loading data</p>
+			<form action="/results" method="post" id="symptom-form" class="hidden">
+				<!-- Country -->
+				<div class="form-group">
+					<select name="country">
+			    		<option value=null>Select Country</option>
+			    		<option th:each="country : ${countries}" th:value="${country.getCode()}" th:text="${country.getName()}"></option>
+			    	</select>
+				</div>
+	
+				<!-- City -->
+				<div class="form-group">
+					<select name="city">
+			    		<option value=null>Select City</option>
+			    		<option th:each="city : ${cities}" th:value="${city.getName()}" th:text="${city.getName()}"></option>
+			    	</select>
+				</div>
+	
+				<button type="submit" class="btn btn-primary">See Results</button>
+			</form>
+		</div>
+	
+		<!-- Error block -->
+		<div th:if="${success == false}">
+			<p>Error loading data</p>
+		</div>
 	</div>
 	
 	<!-- Bootstrap -->
