@@ -15,6 +15,16 @@ h2 {
     font-weight: 400;
 }
 
+label {
+	margin-right: 12px;
+}
+
+img {
+    max-width: 22px;
+    max-height: 22px;
+    margin-top: -6px;
+}
+
 .header-tag {
 	font-weight: 500;
 	color: #003B5C;
@@ -51,6 +61,13 @@ h2 {
 	padding: 20px 0;
 }
 
+.symptom-form {
+	border-top: 1px solid white;
+	padding: 20px 0;
+	max-width: 50%;
+	margin: auto;
+}
+
 .btn-primary {
 	background: #117BB0;
 }
@@ -63,6 +80,21 @@ h2 {
 .btn-container {
     max-width: 158px;
     margin: 30px auto;
+}
+
+.root-route {
+	cursor: pointer;
+	margin: 0 6px;
+}
+
+.router-link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.router-link:hover {
+	color: inherit;
+	text-decoration: none;
 }
 
 .btn-disclaimer {

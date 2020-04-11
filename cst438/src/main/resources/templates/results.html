@@ -5,14 +5,49 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-
 	<link rel="stylesheet" href="./styles/styles.css">
+	<link rel="icon" href="./assets/favicon.ico">
 	<script src="./js/results.js"></script>
 
-	<title>Results Page</title>
+	<title>COVID-19 Symptom - Results</title>
 </head>
 <body>
-	<h1>Results Page</h1>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="row">
+			<!-- Root Route -->
+			<div class="col-xs-6 root-route">
+				<a href="/" class="router-link">
+					<h1>
+						<img src="./assets/favicon.ico" />
+						<span class="header-tag">438</span>
+						Health Center
+					</h1>
+				</a>
+			</div>
+			
+			<!-- Subroute -->
+			<div class="col-xs-6">
+				<h1>
+					<span class="header-divider">/</span>
+					COVID-19 Symptom Results
+				</h1>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- Main Container -->
+	<div class="main-container">
+		<!-- Success block -->
+		<div th:if="${success == true}">
+			<h2>Your results are in</h2>
+		</div>
+
+		<!-- Loading block -->
+		<div th:if="${success == false}">
+			<h2>There was an error fetching your results</h2>
+		</div>
+	</div>
 	
 	<!-- Bootstrap -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
