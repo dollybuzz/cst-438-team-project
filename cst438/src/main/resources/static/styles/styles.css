@@ -1,0 +1,139 @@
+body, html {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: #003B5C;
+}
+
+h1 {
+	font-size: 24px;
+    font-weight: 300;
+}
+
+h2 {
+	font-size: 36px;
+    font-weight: 400;
+}
+
+label {
+	margin-right: 12px;
+	width: 100px;
+	text-align: center;
+}
+
+img {
+    max-width: 22px;
+    max-height: 22px;
+    margin-top: -6px;
+}
+
+select {
+	width: 250px;
+}
+
+.header-tag {
+	font-weight: 500;
+	color: #003B5C;
+}
+
+.header-divider {
+	font-weight: 400;
+}
+
+.main-container {
+	color: white;
+	padding: 40px;
+}
+
+.paragraph {
+    max-width: 50%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.bold-paragraph {
+	font-weight: 700;
+}
+
+.italicized-paragraph {
+	font-style: italic;
+}
+
+.warning-paragraph {
+	color: red;
+	text-transform: uppercase;
+	margin-bottom: 0;
+	border-top: 1px solid white;
+	padding: 20px 0;
+}
+
+.symptom-form {
+	border-top: 1px solid white;
+	padding: 20px 0;
+	max-width: 50%;
+	margin: auto;
+}
+
+.btn-primary {
+	background: #117BB0;
+}
+
+.btn-secondary {
+	background: #F8F9FA;
+	color: #117BB0;
+}
+
+.btn-container {
+    max-width: 158px;
+    margin: 30px auto;
+}
+
+.root-route {
+	cursor: pointer;
+	margin: 0 6px;
+}
+
+.router-link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.router-link:hover {
+	color: inherit;
+	text-decoration: none;
+}
+
+.btn-disclaimer {
+	margin: 0 2px;
+}
+
+.hidden {
+	display: none;
+}
+
+.shown-block {
+	display: block;
+}
+
+.shown-inline {
+	display: inline;
+}
+
+@media only screen and (max-width: 600px) {
+	.paragraph, .symptom-form {
+		max-width: 100%;
+	}
+	
+	h1 {
+		font-size: 18px;
+	}
+	
+	h2 {
+		font-size: 24px;
+	}
+}
+
+
+
+
+
