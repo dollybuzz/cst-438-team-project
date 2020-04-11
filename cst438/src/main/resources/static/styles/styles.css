@@ -17,12 +17,18 @@ h2 {
 
 label {
 	margin-right: 12px;
+	width: 100px;
+	text-align: center;
 }
 
 img {
     max-width: 22px;
     max-height: 22px;
     margin-top: -6px;
+}
+
+select {
+	width: 250px;
 }
 
 .header-tag {
@@ -111,6 +117,20 @@ img {
 
 .shown-inline {
 	display: inline;
+}
+
+@media only screen and (max-width: 600px) {
+	.paragraph, .symptom-form {
+		max-width: 100%;
+	}
+	
+	h1 {
+		font-size: 18px;
+	}
+	
+	h2 {
+		font-size: 24px;
+	}
 }
 
 
