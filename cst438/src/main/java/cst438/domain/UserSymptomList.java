@@ -32,6 +32,20 @@ public class UserSymptomList {
 	private boolean ninthSymptomIsActive;
 	@Column(name="tenthSympt")
 	private boolean tenthSymptomIsActive;
+	
+	public UserSymptomList(boolean first, boolean second, boolean third, boolean fourth, boolean fifth, boolean sixth, boolean seventh, boolean eighth, boolean ninth, boolean tenth) {
+		firstSymptomIsActive = first;
+		secondSymptomIsActive = second;
+		thirdSymptomIsActive = third;
+		fourthSymptomIsActive = fifth;
+		sixthSymptomIsActive = sixth;
+		seventhSymptomIsActive = seventh;
+		eighthSymptomIsActive = eighth;
+		ninthSymptomIsActive = ninth;
+		tenthSymptomIsActive = tenth;
+	}
+	
+	
 	public boolean isFirstSymptomIsActive() {
 		return firstSymptomIsActive;
 	}
