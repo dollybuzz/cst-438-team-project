@@ -10,9 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, String> {	
 	List<User> findAllByOrderByIdAsc();
 	
-	@Query("select u from users where id = ?1")
-	List<User> findByIdOrderByIdAsc(String id);
-	
 	@Query("select u from users u where district = ?1")
 	List<User> findByDistrictOrderByIdAsc(String district);
 
