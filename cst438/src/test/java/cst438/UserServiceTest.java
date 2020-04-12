@@ -6,6 +6,7 @@ import static org.mockito.BDDMockito.given;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,25 +37,37 @@ public class UserServiceTest {
 	}
 	
 	/**
+	 * test that a general search will return all available users
+	 * @throws Exception
+	 */
+	public void testUsersFindAll() throws Exception{
+		List<User> allUsers = new ArrayList<User>();
+		allUsers.add(testInfoPos1);
+		allUsers.add(testInfoNeg1);
+		allUsers.add(testInfoPos2);
+		allUsers.add(testInfoNeg2);
+		
+		given(userRepo.findAllByOrderByIdAsc()).willReturn(allUsers);
+		
+		List<User> actualUsers = userService.getUsers();
+		assertThat(actualUsers).isEqualTo(allUsers);
+	}
+	
+	/**
 	 * Test that a search for users with a given symptom returns the correct list of users.
 	 * @throws Exception
 	 */
 	@Test
 	public void testUsersFoundBySymptom() throws Exception {
-		List<User> allUsersTest = new ArrayList<User>();
-		allUsersTest.add(testInfoPos1);
-		allUsersTest.add(testInfoNeg1);
-		allUsersTest.add(testInfoPos2);
-		allUsersTest.add(testInfoNeg2);
 		List<User> positiveUsersTest = new ArrayList<User>();
 		positiveUsersTest.add(testInfoPos1);
 		positiveUsersTest.add(testInfoPos2);
 		
 		
-		given(userRepo.findAllByOrderByIdAsc()).willReturn(allUsersTest);
+		given(userRepo.findBySymptomPresent("Symptom2")).willReturn(positiveUsersTest);
 		
 		
-		List<User> actualUsers = userService.getUsersByHasSymptom("Symptom2");
+		ArrayList<User> actualUsers = userService.getUsersByHasSymptom("Symptom2");
 		assertThat(actualUsers).isEqualTo(positiveUsersTest);
 	}
 
@@ -64,20 +77,15 @@ public class UserServiceTest {
 	 */
 	@Test
 	public void testUsersFoundByDistrict() throws Exception {
-		List<User> allUsersTest = new ArrayList<User>();
-		allUsersTest.add(testInfoPos1);
-		allUsersTest.add(testInfoNeg1);
-		allUsersTest.add(testInfoPos2);
-		allUsersTest.add(testInfoNeg2);
 		List<User> ukUsersTest = new ArrayList<User>();
 		ukUsersTest.add(testInfoNeg2);
 		ukUsersTest.add(testInfoPos2);
 		
 		
-		given(userRepo.findAllByOrderByIdAsc()).willReturn(allUsersTest);
+		given(userRepo.findByDistrictOrderByIdAsc("England")).willReturn(ukUsersTest);
 		
 		
-		List<User> actualUsers = userService.getUsersByDistrict("England");
+		ArrayList<User> actualUsers = userService.getUsersByDistrict("England");
 		assertThat(actualUsers).isEqualTo(ukUsersTest);
 	}
 
@@ -87,14 +95,9 @@ public class UserServiceTest {
 	 */
 	@Test
 	public void testUserFoundByID() throws Exception {
-		List<User> allUsersTest = new ArrayList<User>();
-		allUsersTest.add(testInfoPos1);
-		allUsersTest.add(testInfoNeg1);
-		allUsersTest.add(testInfoPos2);
-		allUsersTest.add(testInfoNeg2);
+		Optional<User> optionalVersion = Optional.of(testInfoPos1);
 		
-		
-		given(userRepo.findAllByOrderByIdAsc()).willReturn(allUsersTest);
+		given(userRepo.findById(Long.toString(1))).willReturn(optionalVersion);
 		
 		
 		User actualUser = userService.getUserByID(1);
