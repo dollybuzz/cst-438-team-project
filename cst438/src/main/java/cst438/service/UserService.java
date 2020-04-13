@@ -30,7 +30,7 @@ public class UserService {
 	public User getUserByID(long id) {
 		Optional<User> user = userRepository.findById(Long.toString(id));
 
-		return user.isPresent() ? user.get() : null;
+		return user.isPresent() ? user.get() : new User(null, null, null, -1);
 	}
 
 	/**
