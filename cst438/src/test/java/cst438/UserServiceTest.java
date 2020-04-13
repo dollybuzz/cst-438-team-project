@@ -37,7 +37,7 @@ public class UserServiceTest {
 	}
 	
 	/**
-	 * test that a general search will return all available users
+	 * test that a general search will return all
 	 * @throws Exception
 	 */
 	public void testUsersFindAll() throws Exception{
@@ -109,6 +109,7 @@ public class UserServiceTest {
 	 */
 	@Test 
 	public void  testUserNotFoundByID() {
+		User testUser = new User(null, null, allFalse, -1);
 		List<User> allUsersTest = new ArrayList<User>();
 		allUsersTest.add(testInfoPos1);
 		allUsersTest.add(testInfoNeg1);
@@ -120,6 +121,6 @@ public class UserServiceTest {
 		
 		
 		User actualUser = userService.getUserByID(25);
-		assertThat(actualUser).isEqualTo(null);
+		assertThat(actualUser).isEqualTo(testUser);
 	}
 }

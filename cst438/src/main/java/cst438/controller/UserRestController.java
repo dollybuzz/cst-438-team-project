@@ -27,7 +27,13 @@ public class UserRestController {
 		User user = userService.getUserByID(id);
 		HttpStatus status;
 		
-		status = user == null ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
+		if (user.getCountryCode() == null) {
+			status = HttpStatus.BAD_REQUEST;
+			user = new User(null, null, null, -1);
+		}
+		else {
+			status = HttpStatus.OK;
+		}
 		
 		return new ResponseEntity<User> (user, status);
 	}
@@ -38,13 +44,13 @@ public class UserRestController {
 	 * @return HTTP response
 	 */
 	@GetMapping("/api/usersBySymptom/{symptomName}")
-	public ResponseEntity<ArrayList> getUsersBySymptom(@PathVariable("symptomName") String symptom) {
-		ArrayList users = userService.getUsersByHasSymptom(symptom);
+	public ResponseEntity<ArrayList<User>> getUsersBySymptom(@PathVariable("symptomName") String symptom) {
+		ArrayList<User> users = userService.getUsersByHasSymptom(symptom);
 		HttpStatus status;
 		
-		status = users == null ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
+		status = users.size() == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
 		
-		return new ResponseEntity<ArrayList> (users, status);
+		return new ResponseEntity<ArrayList<User>> (users, status);
 	}
 
 	/**
@@ -52,14 +58,14 @@ public class UserRestController {
 	 * 
 	 * @return HTTP response
 	 */
-	@GetMapping("/api/userById/{district}")
-	public ResponseEntity<ArrayList> getUsersByDistrict(@PathVariable("district") String district) {
-		ArrayList users = userService.getUsersByDistrict(district);
+	@GetMapping("/api/usersByDistrict/{district}")
+	public ResponseEntity<ArrayList<User>> getUsersByDistrict(@PathVariable("district") String district) {
+		ArrayList<User> users = userService.getUsersByDistrict(district);
 		HttpStatus status;
 		
-		status = users == null ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
+		status = users.size() == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
 		
-		return new ResponseEntity<ArrayList> (users, status);
+		return new ResponseEntity<ArrayList<User>> (users, status);
 	}
 	
 }
