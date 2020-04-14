@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import cst438.domain.*;
 import cst438.service.CityService;
 import cst438.service.CountryService;
+import cst438.service.SymptomService;
 
 @Controller
 public class IndexController {
+
+	@Autowired
+	private SymptomService symptomService;
 
 	@Autowired
 	private CityService cityService;
@@ -24,11 +28,13 @@ public class IndexController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		// get location
-		// get symptoms
-		// etc. etc.
-		// set success true/false
-		// return index
+		List<Symptom> symptoms = symptomService.getSymptoms();
+		if (symptoms.size() == 0) {
+			successfulCall = false;
+		} else {
+			successfulCall = true;
+			model.addAttribute("symptoms", symptoms);
+		}
 		
 		List<Country> countries = countryService.getCountries();
 		if (countries.size() == 0) {

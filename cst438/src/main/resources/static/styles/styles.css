@@ -119,6 +119,25 @@ select {
 	display: inline;
 }
 
+.symptom-container {
+	text-align: left;
+}
+
+.symptom-label {
+	text-align: left;
+	margin-right: 0;
+	margin-top: -8px;
+}
+
+.symptom-header {
+	font-size: 17px;
+}
+
+.result-button {
+	margin-top: 18px;
+	width: 200px;
+}
+
 @media only screen and (max-width: 600px) {
 	.paragraph, .symptom-form {
 		max-width: 100%;
@@ -130,6 +149,15 @@ select {
 	
 	h2 {
 		font-size: 24px;
+	}
+	
+	.symptom-label {
+		width: 90%;
+	}
+	
+	.symptom-control {
+		width: 10%;
+		text-align: left;
 	}
 }
 
