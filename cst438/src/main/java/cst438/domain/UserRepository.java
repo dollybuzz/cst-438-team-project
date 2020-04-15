@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, String> {	
 	List<User> findAllByOrderByIdAsc();
 	
-	@Query("select u from users u where district = ?1")
+	@Query("select u from Users u where district = ?1")
 	List<User> findByDistrictOrderByIdAsc(String district);
 
-	@Query("select u from users u natural join userSymptomList s where ?1 = true")
+	@Query(value = "select * from Users u natural join UserSymptomList s where ?1 = true", nativeQuery = true)
 	List<User> findBySymptomPresent(String symptomName);
 }

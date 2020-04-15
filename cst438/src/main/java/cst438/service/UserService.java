@@ -10,12 +10,15 @@ import org.springframework.stereotype.Service;
 
 import cst438.domain.User;
 import cst438.domain.UserRepository;
+import cst438.domain.UserSymptomList;
+import cst438.domain.UserSymptomListRepository;
 
 @Service
 public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired UserSymptomListRepository symptoms;
 
 	public List<User> getUsers() {
 		return userRepository.findAllByOrderByIdAsc();
@@ -52,5 +55,25 @@ public class UserService {
 	 */
 	public ArrayList<User> getUsersByDistrict(String district) {
 		return new ArrayList<User>(userRepository.findByDistrictOrderByIdAsc(district));
+	}
+	
+	public UserSymptomList configureSymptoms(boolean first, boolean second, boolean third, boolean fourth, boolean fifth, boolean sixth, boolean seventh, boolean eighth, boolean ninth, boolean tenth) {
+		
+		UserSymptomList symptoms = new UserSymptomList(first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth);
+		
+		return symptoms;
+	
+	
+	}
+	
+	
+	/*
+	 * save user to repo
+	 */
+	public User createUser(String countryCode, String district, UserSymptomList symptomList, long age) {
+		User user = new User(countryCode, district, symptomList, age);
+		symptoms.save(user.getSymptoms());
+		userRepository.save(user);
+		return user;
 	}
 }
