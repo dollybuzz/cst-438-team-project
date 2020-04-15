@@ -66,7 +66,7 @@ public class UserRestControllerTest {
 	public void getUsersByDistrictTest() throws Exception {
 
 		User expectedUser = new User("USA", "California",
-				new UserSymptomList(true, true, true, false, false, false, true, true, true, false), 20);
+				new UserSymptomList(true, true, true, false, false, false, true, true, true, false, false, false), 20);
 		ArrayList<User> expectedList = new ArrayList<User>();
 		expectedList.add(expectedUser);
 		
@@ -102,7 +102,7 @@ public class UserRestControllerTest {
 		String symptomName = "someSymptom";
 
 		User expectedUser = new User("USA", "California",
-				new UserSymptomList(true, true, true, false, false, false, true, true, true, false), 20);
+				new UserSymptomList(true, true, true, false, false, false, true, true, true, false, false, false), 20);
 		ArrayList<User> expectedList = new ArrayList<User>();
 		expectedList.add(expectedUser);
 		
@@ -136,7 +136,7 @@ public class UserRestControllerTest {
 	public void getUserGoodTest() throws Exception {
 
 		User expected = new User("USA", "California",
-				new UserSymptomList(true, true, true, false, false, false, true, true, true, false), 20);
+				new UserSymptomList(true, true, true, false, false, false, true, true, true, false, false, false), 20);
 
 		given(userService.getUserByID(1)).willReturn(expected);
 

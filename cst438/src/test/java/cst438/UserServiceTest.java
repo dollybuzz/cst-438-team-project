@@ -25,8 +25,8 @@ public class UserServiceTest {
 	@MockBean 
 	private UserRepository userRepo;
 
-	private UserSymptomList allTrue = new UserSymptomList(false, true, false, false, false, false, false, false, false, false);
-	private UserSymptomList allFalse = new UserSymptomList(false, false, false, false, false, false, false, false, false, true);
+	private UserSymptomList allTrue = new UserSymptomList(false, true, false, false, false, false, false, false, false, false, false, false);
+	private UserSymptomList allFalse = new UserSymptomList(false, false, false, false, false, false, false, false, false, true, false, false);
 	private User testInfoPos1 = new User("USA", "California", allTrue, 20); 
 	private User testInfoNeg1 = new User("USA", "New York", allFalse, 25); 
 	private User testInfoPos2 = new User("GBR", "London", allTrue, 30); 
