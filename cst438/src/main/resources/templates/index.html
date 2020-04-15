@@ -92,6 +92,7 @@
 
 			<!-- Symptom Form -->
 			<form action="/results" method="post" id="symptom-form" class="symptom-form hidden">
+			
 				<!-- Country -->
 				<div class="form-group">
 					<label for="country">Country</label>
@@ -109,8 +110,19 @@
 			    		<option th:each="city : ${cities}" th:value="${city.getName()}" th:text="${city.getName()}"></option>
 			    	</select>
 				</div>
+
+				<!-- Symptoms -->
+				<p class="symptom-header">Symptoms</p>
+				<div class="form-group symptom-container row">
+					<div th:each="symptom, i : ${symptoms}" class="col-sm-6">
+						<div class="row">
+							<input type="checkbox" th:name="'symptom-' + ${i.index}" th:id="'symptom-' + ${i.index}" class="symptom-control col-sm-1" />
+							<label th:for="'symptom-' + ${i.index}" th:text="${symptom.getSymptom()}" class="symptom-label col-sm-11"></label>
+						</div>
+					</div>
+				</div>
 	
-				<button type="submit" class="btn btn-primary">See Results</button>
+				<button type="submit" class="btn btn-primary result-button">See Results</button>
 			</form>
 		</div>
 	
