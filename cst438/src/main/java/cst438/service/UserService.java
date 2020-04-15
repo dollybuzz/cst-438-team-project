@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import cst438.domain.User;
@@ -57,13 +56,9 @@ public class UserService {
 		return new ArrayList<User>(userRepository.findByDistrictOrderByIdAsc(district));
 	}
 	
-	public UserSymptomList configureSymptoms(boolean first, boolean second, boolean third, boolean fourth, boolean fifth, boolean sixth, boolean seventh, boolean eighth, boolean ninth, boolean tenth) {
-		
-		UserSymptomList symptoms = new UserSymptomList(first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth);
-		
-		return symptoms;
-	
-	
+	public UserSymptomList configureSymptoms(boolean first, boolean second, boolean third, boolean fourth, boolean fifth, boolean sixth, boolean seventh, boolean eighth, boolean ninth, boolean tenth, boolean eleventh, boolean twelfth) {
+		UserSymptomList symptoms = new UserSymptomList(first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth);
+		return symptoms;		
 	}
 	
 	
