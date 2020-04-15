@@ -123,4 +123,5 @@ public class UserServiceTest {
 		User actualUser = userService.getUserByID(25);
 		assertThat(actualUser).isEqualTo(testUser);
 	}
+	
 }
