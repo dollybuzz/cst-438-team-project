@@ -32,6 +32,26 @@ public class UserSymptomList {
 	private boolean ninthSymptomIsActive;
 	@Column(name="tenthSympt")
 	private boolean tenthSymptomIsActive;
+	@Column(name="eleventhSympt")
+	private boolean eleventhSymptomIsActive;
+	@Column(name="twelfthSympt")
+	private boolean twelfthSymptomIsActive;
+	
+	public UserSymptomList(boolean first, boolean second, boolean third, boolean fourth, boolean fifth, boolean sixth, boolean seventh, boolean eighth, boolean ninth, boolean tenth, boolean eleventh, boolean twelfth) {
+		firstSymptomIsActive = first;
+		secondSymptomIsActive = second;
+		thirdSymptomIsActive = third;
+		fourthSymptomIsActive = fifth;
+		sixthSymptomIsActive = sixth;
+		seventhSymptomIsActive = seventh;
+		eighthSymptomIsActive = eighth;
+		ninthSymptomIsActive = ninth;
+		tenthSymptomIsActive = tenth;
+		eleventhSymptomIsActive = eleventh;
+		twelfthSymptomIsActive = twelfth;
+	}
+	
+	
 	public boolean isFirstSymptomIsActive() {
 		return firstSymptomIsActive;
 	}
@@ -92,6 +112,18 @@ public class UserSymptomList {
 	public void setTenthSymptomIsActive(boolean tenthSymptomIsActive) {
 		this.tenthSymptomIsActive = tenthSymptomIsActive;
 	}
+	public boolean iseleventhSymptomIsActive() {
+		return eleventhSymptomIsActive;
+	}
+	public void setEleventhSymptomIsActive(boolean eleventhSymptomIsActive) {
+		this.eleventhSymptomIsActive = eleventhSymptomIsActive;
+	}
+	public boolean isTwelfthSymptomIsActive() {
+		return twelfthSymptomIsActive;
+	}
+	public void setTwelfthSymptomIsActive(boolean twelfthSymptomIsActive) {
+		this.twelfthSymptomIsActive = twelfthSymptomIsActive;
+	}
 
 	public long getId() {
 		return this.id;
@@ -101,19 +133,19 @@ public class UserSymptomList {
 	
 	@Override
 	public String toString() {
-		return "{"
-				+ "id: " + id
-				+ "firstSymptomIsActive: " + firstSymptomIsActive
-				+ "secondSymptomIsActive: " + secondSymptomIsActive
-				+ "thirdSymptomIsActive: " + thirdSymptomIsActive
-				+ "fourthSymptomIsActive: " + fourthSymptomIsActive
-				+ "fifthSymptomIsActive: " + fifthSymptomIsActive
-				+ "sixthSymptomIsActive: " + sixthSymptomIsActive
-				+ "seventhSymptomIsActive: " + seventhSymptomIsActive
-				+ "eighthSymptomIsActive: " + eighthSymptomIsActive
-				+ "ninthSymptomIsActive: " + ninthSymptomIsActive
-				+ "tenthSymptomIsActive: " + tenthSymptomIsActive
-				+ "}";
+		return "UserSymtpomList["
+				+ "id= " + id
+				+ "firstSymptomIsActive= " + firstSymptomIsActive
+				+ "secondSymptomIsActive= " + secondSymptomIsActive
+				+ "thirdSymptomIsActive= " + thirdSymptomIsActive
+				+ "fourthSymptomIsActive= " + fourthSymptomIsActive
+				+ "fifthSymptomIsActive= " + fifthSymptomIsActive
+				+ "sixthSymptomIsActive= " + sixthSymptomIsActive
+				+ "seventhSymptomIsActive= " + seventhSymptomIsActive
+				+ "eighthSymptomIsActive= " + eighthSymptomIsActive
+				+ "ninthSymptomIsActive= " + ninthSymptomIsActive
+				+ "tenthSymptomIsActive= " + tenthSymptomIsActive
+				+ "]";
 	}
 
 }

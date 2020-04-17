@@ -33,7 +33,8 @@ public class User {
 		this.countryCode = countryCode;
 		this.district = district;
 		this.symptoms = symptoms;
-		this.symptomListId = symptoms.getId();
+		if (symptoms != null)
+			this.symptomListId = symptoms.getId();
 	}
 
 
@@ -91,13 +92,19 @@ public class User {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		return this.id == ((User) obj).getId() || 
+				(this.getAge() == -1 && ((User) obj).getAge() == -1);
+	}
+	
+	@Override
 	public String toString() {
-		return "{"
-				+ "id: " + id
-				+ "coutryCode: " + countryCode
-				+ "district: " + district
-				+ "symptomListId: " + symptomListId
-				+ "}";
+		return "User ["
+				+ "id=" + id
+				+ ", coutryCode=" + countryCode
+				+ ", district=" + district
+				+ ", symptomListId=" + symptomListId
+				+ "]";
 	}
 	
 	
