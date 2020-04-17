@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Symptom")
+@Table(name="symptom")
 public class Symptom {
 	
 
@@ -17,6 +17,10 @@ public class Symptom {
 	
 	@Column(name="symptom")
 	private String symptom;
+	
+	public Symptom() {
+		this("symptom");
+	}
 	
 	public Symptom(String symptom)
 	{
