@@ -56,7 +56,7 @@ public class ResultController {
 		}
 
 		model.addAttribute("success", successfulCall);
-		return "results";
+		return "index";
 	}
 	
 	@PostMapping("/results")
