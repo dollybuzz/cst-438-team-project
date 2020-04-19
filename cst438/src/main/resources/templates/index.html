@@ -111,6 +111,14 @@
 			    		<option th:each="city : ${cities}" th:value="${city.getName()}" th:text="${city.getName()}"></option>
 			    	</select>
 				</div>
+				
+				<!-- Age -->
+				<div class="form-group">
+					<label for="age">Age</label>
+					<input type="number" id="age" name="age" min="0" max="150" style="width: 250px" placeholder="ex. 21" />
+			    	</select>
+				</div>
+
 
 				<!-- Symptoms -->
 				<p class="symptom-header">Symptoms</p>
@@ -139,12 +147,16 @@
 <script>
 	$("form").submit(function(e) {
 		var error = false;
+		if($("#country").val() == "null") {
+			alert("Must Select Country");
+			error = true;
+		}
 		if($("#city").val() == "null") {
 			alert("Must Select City");
 			error = true;
 		}
-		if($("#cpimtru").val() == "null") {
-			alert("Must Select Country");
+		if($("#age").val() == "") {
+			alert("Must Enter Age");
 			error = true;
 		}
 		var i;

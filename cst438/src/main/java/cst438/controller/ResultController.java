@@ -70,6 +70,7 @@ public class ResultController {
 	public String result(
 			@RequestParam("country") String countryName,
 			@RequestParam("city") String cityName,
+			@RequestParam("age") String age,
 			@RequestParam("symptom-val") Boolean[] symptomVal,
 			Model model) {
 		
