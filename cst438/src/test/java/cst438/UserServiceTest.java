@@ -40,6 +40,7 @@ public class UserServiceTest {
 	 * test that a general search will return all
 	 * @throws Exception
 	 */
+	@Test
 	public void testUsersFindAll() throws Exception{
 		List<User> allUsers = new ArrayList<User>();
 		allUsers.add(testInfoPos1);
