@@ -31,7 +31,7 @@ public class SymptomRestController {
 	}
 	
 	//get symptom based on provided id
-	@GetMapping("/api/symptom/{id}")
+	@GetMapping("/api/symptomId/{id}")
 	public ResponseEntity<Symptom> getSymptomById(@PathVariable("id") String id) {
 		Long num = Long.valueOf(id);
 		Symptom symp = symptomService.getSymptomId(num);
@@ -46,6 +46,21 @@ public class SymptomRestController {
 		}
 	}
 	
+	//get symptom based on provided string
+	@GetMapping("/api/symptomString/{string}")
+	public ResponseEntity<Symptom> getSymptomByString(@PathVariable("string") String symptom) {
+		Symptom symp = symptomService.getSymptomString(symptom);
+		
+		if(symp != null)
+		{
+			return new ResponseEntity<Symptom>(symp, HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<Symptom>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	//no post mapping since there will be no feature to add new symptoms
-	//therefore, symptom table values was manually inputed in MySQL
+	//therefore, symptom table values were manually inputed in MySQL
 }
