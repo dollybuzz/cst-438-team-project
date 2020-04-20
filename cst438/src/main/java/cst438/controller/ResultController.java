@@ -117,18 +117,18 @@ public class ResultController {
 			message = "Based on your results, you are experiencing all of the symptoms a typical COVID-19 patient would display. We highly recommend to seek medical attention.";
 			color = "danger";
 			risk = "HIGH RISK";
-		}else if (calculation > 90) {
+		}else if (calculation > 80) {
 			message = "You present a large amount of symptoms. Although this is just a preliminary check to see if you should seek medical attention, please make sure you call ahead to let the hospital know you are coming and with the symptoms you are presenting.";
 			color = "danger";
-			risk = "MEDIUM-HIGH RISK";
+			risk = "HIGH RISK";
 		}else if (calculation > 60) {
 			message = "You present symptoms that we would consider in the cusp of possibly having COVID-19. We would recommend to get tested if possible. If not, continue to monitor your symptoms and seek medical attention if you are not feeling well.";
 			color = "warning";
-			risk = "MEDIUM RISK";
+			risk = "MEDIUM-High RISK";
 		}else if (calculation > 30) {
 			message = "You present a low risk. Possibly have a cold or something else. However, if you start presenting more symptoms, we recommend to seek medical advise. ";
 			color = "warning";
-			risk = "MEDIUM-LOW RISK";
+			risk = "MEDIUM RISK";
 		}else if (calculation > 0) {
 			message = "You do not present many symptoms to be worried as having COVID-19, however, you could still be asymptomatic, and should continue to follow the CDC guidelines of social distancing.";
 			color = "success";
