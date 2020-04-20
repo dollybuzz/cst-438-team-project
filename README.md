@@ -1,6 +1,6 @@
 # COVID-19 Symptom Checker
 ## What is it?
-This repository contains the front end and back end code for the COVID-19 Symptom Checker project for CST 438, team 7. This project has a dependency on our messaging service, which you can find [here]([https://github.com/csumb-ameraz/cst-438-team-project-rabbitmq](https://github.com/csumb-ameraz/cst-438-team-project-rabbitmq))
+This repository contains the front end and back end code for the COVID-19 Symptom Checker project for CST 438, team 7. This project has a dependency on our messaging service, which you can find [here](https://github.com/csumb-ameraz/cst-438-team-project-rabbitmq)
 
 ## How to use it
 1. clone this repo
