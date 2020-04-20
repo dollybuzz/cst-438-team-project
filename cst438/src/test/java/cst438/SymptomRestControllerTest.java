@@ -1,8 +1,4 @@
 package cst438;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -10,10 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import org.junit.Before;
 import org.junit.Test; //JUnit 4
 import org.junit.runner.RunWith;
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.json.JacksonTester;
@@ -23,11 +16,6 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cst438.controller.SymptomRestController;
@@ -37,19 +25,6 @@ import cst438.service.SymptomService;
 @RunWith(SpringRunner.class)
 @WebMvcTest(SymptomRestController.class)
 public class SymptomRestControllerTest {
-<<<<<<< HEAD
-
-	@MockBean 
-	private SymptomService symptomService;
-
-	@Autowired
-	private MockMvc mvc;
-
-
-	// This object will be magically initialized by the initFields method below.
-	private JacksonTester<Symptom> json;
-
-=======
 	
 	@MockBean
 	private SymptomService symptomService;
@@ -60,20 +35,12 @@ public class SymptomRestControllerTest {
 	// This object will be magically initialized by the initFields method below.
 	private JacksonTester<Symptom> json;
 	
->>>>>>> origin/master
 	@Before
 	public void setup() {
 		JacksonTester.initFields(this, new ObjectMapper());
 	}
-<<<<<<< HEAD
-
 	@Test
 	public void contextLoads() {
-
-=======
-	@Test
-	public void contextLoads() {
->>>>>>> origin/master
 	}
 	
 	//Test to ensure that a valid symptom id will elicit a HTTP 200 response
@@ -87,11 +54,7 @@ public class SymptomRestControllerTest {
 	        .accept(MediaType.APPLICATION_JSON))
 	        .andReturn()
 	        .getResponse();
-<<<<<<< HEAD
-	    
-=======
 	   
->>>>>>> origin/master
 	    assertEquals("Response is 200", HttpStatus.OK.value(), response.getStatus());
 	}
 	
@@ -106,11 +69,7 @@ public class SymptomRestControllerTest {
 	        .accept(MediaType.APPLICATION_JSON))
 	        .andReturn()
 	        .getResponse();
-<<<<<<< HEAD
-	    
-=======
 	   
->>>>>>> origin/master
 	    assertEquals("Response is 400", HttpStatus.BAD_REQUEST.value(), response.getStatus());
 	}
 	
@@ -125,11 +84,7 @@ public class SymptomRestControllerTest {
 	        .accept(MediaType.APPLICATION_JSON))
 	        .andReturn()
 	        .getResponse();
-<<<<<<< HEAD
-	    
-=======
 	   
->>>>>>> origin/master
 	    assertEquals("Response is 200",  HttpStatus.OK.value(), response.getStatus());
 	}
 	
@@ -144,16 +99,8 @@ public class SymptomRestControllerTest {
 	        .accept(MediaType.APPLICATION_JSON))
 	        .andReturn()
 	        .getResponse();
-<<<<<<< HEAD
-	    
-	    assertEquals("Response is 400", HttpStatus.BAD_REQUEST.value(), response.getStatus());
-	}
-	
-}
-=======
 	   
 	    assertEquals("Response is 400", HttpStatus.BAD_REQUEST.value(), response.getStatus());
 	}
 	
 }
->>>>>>> origin/master
