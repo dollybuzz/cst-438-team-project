@@ -56,19 +56,4 @@ public class SymptomService {
 			log.info("No matching symptom was found.");
 			return null;
 		}
-		
-		public Symptom getSymptomString(String symptom)
-		{
-			Symptom symp = symptomRepository.findBySymptom(symptom);
-			
-			if(symp != null)
-			{
-				return symp;
-			}
-			else
-			{
-				log.info("Symptom string was not valid.");
-				return null;
-			}
-		}
 }
