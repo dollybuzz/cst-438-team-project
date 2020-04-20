@@ -2,6 +2,9 @@ package cst438;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test; //JUnit 5
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +24,18 @@ public class SymptomServiceTest {
 	@Test
 	public void contextLoads()
 	{}
+	
+	//Test that the entire symptom list will return
+	@Test
+	public void testGetAllSymptoms() {
+		List<Symptom> allSymptoms = new ArrayList<Symptom>();
+		
+		given(symptomRepository.findAllByOrderById()).willReturn(allSymptoms);
+		
+		List<Symptom> actualSymptoms = symptomService.getSymptoms();
+		
+		assertThat(actualSymptoms).isEqualTo(allSymptoms);
+	}
 	
 	//Test that a valid id search returns correct symptom
 	@Test
