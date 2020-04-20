@@ -46,7 +46,7 @@ public class UserService {
 		return new ArrayList<User>(userRepository.findBySymptomPresent(symptomName));
 	}
 
-	/**
+	/**,
 	 * Fetches a list of users within the given district
 	 * 
 	 * @param district - Sakila World Database district of a given area
@@ -66,6 +66,7 @@ public class UserService {
 	 * save user to repo
 	 */
 	public User createUser(String countryCode, String district, UserSymptomList symptomList, long age) {
+		System.out.println(age);
 		User user = new User(countryCode, district, symptomList, age);
 		symptoms.save(user.getSymptoms());
 		userRepository.save(user);
