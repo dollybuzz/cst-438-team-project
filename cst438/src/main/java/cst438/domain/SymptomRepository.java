@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SymptomRepository extends JpaRepository<Symptom, Long> {
 	
-	List<Symptom> findAllByOrderById();
+	List<Symptom> findAllByOrderById(); 
 	
-	Symptom findById(long id);
+	Symptom findById(long id);	
+	
+	Symptom findBySymptom(String symptom);
 }
