@@ -1,10 +1,16 @@
 package cst438.controller;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +21,7 @@ import cst438.domain.*;
 import cst438.service.CityService;
 import cst438.service.CountryService;
 import cst438.service.SymptomService;
+import cst438.service.UserService;
 
 @Controller
 public class ResultController {
@@ -27,6 +34,9 @@ public class ResultController {
 	
 	@Autowired
 	private CountryService countryService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
@@ -70,7 +80,7 @@ public class ResultController {
 	public String result(
 			@RequestParam("country") String countryName,
 			@RequestParam("city") String cityName,
-			@RequestParam("age") String age,
+			@RequestParam("age") long age,
 			@RequestParam("symptom-val") Boolean[] symptomVal,
 			Model model) {
 		
@@ -143,6 +153,13 @@ public class ResultController {
 		model.addAttribute("color", color);
 		model.addAttribute("risk", risk);
 		model.addAttribute("message", message);
+		
+		//Add use and symptom to database
+		UserSymptomList symptomList = userService.configureSymptoms(symptomVal[0], symptomVal[1], symptomVal[2], symptomVal[3], symptomVal[4], symptomVal[5], symptomVal[6], symptomVal[7], symptomVal[8], symptomVal[9], symptomVal[10], symptomVal[11]);
+		userService.createUser(countryName, cityName, symptomList, age);
+		
 		return "results";
 	}
+	
+	
 }
