@@ -19,7 +19,7 @@ public class User {
 	private String countryCode;
 	@Column(name="district")
 	private String district;
-	@Column(name="symptomListId")
+	@Column(name="symptom_list_id")
 	private long symptomListId;
 	@Column(name="age")
 	private long age;

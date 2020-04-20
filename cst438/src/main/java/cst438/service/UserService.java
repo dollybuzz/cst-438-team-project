@@ -67,8 +67,8 @@ public class UserService {
 	 */
 	public User createUser(String countryCode, String district, UserSymptomList symptomList, long age) {
 		System.out.println(age);
+		symptoms.save(symptomList);
 		User user = new User(countryCode, district, symptomList, age);
-		symptoms.save(user.getSymptoms());
 		userRepository.save(user);
 		return user;
 	}

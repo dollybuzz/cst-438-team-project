@@ -13,6 +13,6 @@ public interface UserRepository extends JpaRepository<User, String> {
 	@Query("select u from User u where district = ?1")
 	List<User> findByDistrictOrderByIdAsc(String district);
 
-	@Query(value = "select * from User u natural join UserSymptomList s where ?1 = true", nativeQuery = true)
+	@Query(value = "select * from User u natural join user_symptom_list s where ?1 = true", nativeQuery = true)
 	List<User> findBySymptomPresent(String symptomName);
 }
