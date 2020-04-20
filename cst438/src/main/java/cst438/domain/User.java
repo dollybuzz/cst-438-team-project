@@ -8,9 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import cst438.service.SymptomService;
+
 @Entity
 @Table(name = "User")
 public class User {
+	
+
+	private static final Logger log = LoggerFactory.getLogger(SymptomService.class);
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +46,10 @@ public class User {
 		this.age = age;
 		if (symptoms != null)
 			this.symptomListId = symptoms.getId();
+		else {
+			log.info("Symptom List was not valid.");
+			this.symptomListId = -1;
+		}
 	}
 
 
