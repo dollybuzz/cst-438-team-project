@@ -17,6 +17,7 @@ public class SymptomService {
 		@Autowired
 		private SymptomRepository symptomRepository;
 		
+		//get all symptoms from database
 		public List<Symptom> getSymptoms() {
 			if (symptomRepository.findAllByOrderById() != null)
 			{
@@ -29,6 +30,7 @@ public class SymptomService {
 			}
 		}
 		
+		//get symptom from database by id
 		public Symptom getSymptomId(long id) {
 			
 			Symptom symp = symptomRepository.findById(id);
@@ -37,9 +39,35 @@ public class SymptomService {
 			{
 				return symp;
 			}
+			
+			log.info("Symptom id was not valid.");
+			return null;
+		}
+		
+		//get symptom from database by string
+		public Symptom getSymptomString(String symptom) {
+			Symptom symp = symptomRepository.findBySymptom(symptom);
+			
+			if(symp != null)
+			{
+				return symp;
+			}
+			
+			log.info("No matching symptom was found.");
+			return null;
+		}
+		
+		public Symptom getSymptomString(String symptom)
+		{
+			Symptom symp = symptomRepository.findBySymptom(symptom);
+			
+			if(symp != null)
+			{
+				return symp;
+			}
 			else
 			{
-				log.info("Symptom id was not valid.");
+				log.info("Symptom string was not valid.");
 				return null;
 			}
 		}

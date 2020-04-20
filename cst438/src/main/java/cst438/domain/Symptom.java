@@ -45,6 +45,11 @@ public class Symptom {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		return this.symptom == ((Symptom) obj).getSymptom();
+	}
+	
+	@Override
 	public String toString() {
 		return "{"
 				+ "id: " + id
