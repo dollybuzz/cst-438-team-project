@@ -3,22 +3,32 @@ package cst438.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import cst438.service.SymptomService;
+
 @Entity
-@Table(name = "Users")
+@Table(name = "User")
 public class User {
+	
+
+	private static final Logger log = LoggerFactory.getLogger(SymptomService.class);
+
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name="countryCode")
 	private String countryCode;
 	@Column(name="district")
 	private String district;
-	@Column(name="symptomListId")
+	@Column(name="symptom_list_id")
 	private long symptomListId;
 	@Column(name="age")
 	private long age;
@@ -33,8 +43,13 @@ public class User {
 		this.countryCode = countryCode;
 		this.district = district;
 		this.symptoms = symptoms;
+		this.age = age;
 		if (symptoms != null)
 			this.symptomListId = symptoms.getId();
+		else {
+			log.info("Symptom List was not valid.");
+			this.symptomListId = -1;
+		}
 	}
 
 
@@ -104,6 +119,7 @@ public class User {
 				+ ", coutryCode=" + countryCode
 				+ ", district=" + district
 				+ ", symptomListId=" + symptomListId
+				+ ", age= " + age
 				+ "]";
 	}
 	

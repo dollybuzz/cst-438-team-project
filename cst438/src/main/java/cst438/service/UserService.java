@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import cst438.domain.UserSymptomListRepository;
 
 @Service
 public class UserService {
+	private static final Logger log = LoggerFactory.getLogger(SymptomService.class);
 
 	@Autowired
 	private UserRepository userRepository;
@@ -32,7 +35,13 @@ public class UserService {
 	public User getUserByID(long id) {
 		Optional<User> user = userRepository.findById(Long.toString(id));
 
-		return user.isPresent() ? user.get() : new User(null, null, null, -1);
+		if (user.isPresent()) {
+			return user.get();
+		}
+		else {
+			log.info("User not found.");
+			return new User(null, null, null, -1);
+		}
 	}
 
 	/**
@@ -46,7 +55,7 @@ public class UserService {
 		return new ArrayList<User>(userRepository.findBySymptomPresent(symptomName));
 	}
 
-	/**
+	/**,
 	 * Fetches a list of users within the given district
 	 * 
 	 * @param district - Sakila World Database district of a given area
@@ -66,8 +75,17 @@ public class UserService {
 	 * save user to repo
 	 */
 	public User createUser(String countryCode, String district, UserSymptomList symptomList, long age) {
+		if (age < 0 || age > 150) {
+			log.info("User age was less than 0 or greater than 150");
+			age = -1;
+		}
+		if (symptomList == null) {
+			log.info("Symptom List is null");
+		}
+		else {
+		symptoms.save(symptomList);
+		}
 		User user = new User(countryCode, district, symptomList, age);
-		symptoms.save(user.getSymptoms());
 		userRepository.save(user);
 		return user;
 	}

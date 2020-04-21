@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 
-	<link rel="stylesheet" href="./styles/styles.css">
-	<link rel="icon" href="./assets/favicon.ico">
-	<script src="./js/results.js"></script>
+<link rel="stylesheet" href="./styles/styles.css">
+<link rel="icon" href="./assets/favicon.ico">
+<script src="./js/results.js"></script>
 
-	<title>COVID-19 Symptom - Results</title>
+<title>COVID-19 Symptom - Results</title>
 </head>
 <body>
 	<!-- Navbar -->
@@ -19,39 +23,99 @@
 			<div class="col-xs-6 root-route">
 				<a href="/" class="router-link">
 					<h1>
-						<img src="./assets/favicon.ico" />
-						<span class="header-tag">438</span>
+						<img src="./assets/favicon.ico" /> <span class="header-tag">438</span>
 						Health Center
 					</h1>
 				</a>
 			</div>
-			
+
 			<!-- Subroute -->
 			<div class="col-xs-6">
 				<h1>
-					<span class="header-divider">/</span>
-					COVID-19 Symptom Results
+					<span class="header-divider">/</span> COVID-19 Symptom Results
 				</h1>
 			</div>
 		</div>
 	</nav>
-	
+
 	<!-- Main Container -->
 	<div class="main-container">
 		<!-- Success block -->
 		<div th:if="${success == true}">
 			<h2>Your results are in</h2>
+			You present a <br /> <span id="result" class="text-success h2">[[${risk}]]</span><br />
+			<br />
+			<div class="progress paragraph">
+				<div class='progress-bar-striped' role="progressbar" id="progress"
+					style="width: [[${calculation" aria-valuenow="20" aria-valuemin="0"
+					aria-valuemax="100"></div>
+			</div>
+			<span id="result_calculation" class="h3">[[${yes}]]/12
+				Symptoms Reported</span>
+			<h3>RESULTS</h3>
+			<div class="paragraph">
+				[[${message}]]<br />
+				<br />
+				<p class="h5">Symptoms</p>
+				<div class="form-group symptom-container row">
+					<div th:each="symptom, i : ${symptoms}" class="col-sm-6">
+						<div class="row">
+							<span th:for="'symptom-' + ${i.index}"
+								th:text="${symptom.getSymptom()}"
+								th:classappend="'text-' + ${symptoms_all[{i.index}]}"
+								class="symptom-label col-sm-12"></span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		<br />
+		<h3>What does this mean?</h3>
+		<p class="paragraph">Although these results are not conclusive and
+			testing should be done. We took your risk factor based on the
+			symptoms provided and provided recommendations of whether medical
+			attention should be seeked. Please always check with your doctor for
+			accurate results.</p>
+		<br />
+
+		<h3>How were the results calculated?</h3>
+		<p class="paragraph">Results were calculated by taking the
+			percentage of the number of symptoms you present by the total number
+			of symptoms available.</p>
+		<br />
+		<h3>What next?</h3>
+		<p class="paragraph">Your results have been sent to the CDC
+			anonymously. Continue to follow CDC guidelines for social distancing.
+			No vaccine has been found at the moment and guidelines should be
+			followed until a proper vaccine, treatment, and tests have been
+			found.</p>
 
 		<!-- Loading block -->
 		<div th:if="${success == false}">
 			<h2>There was an error fetching your results</h2>
 		</div>
+
 	</div>
-	
+
 	<!-- Bootstrap -->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			$("#progress").width("[[${calculation}]]%");
+			$("#progress").addClass("bg-[[${color}]]");
+			$("#result_calculation").addClass("text-[[${color}]]");
+			$("#result").addClass("text-[[${color}]]");
+		});
+	</script>
 </body>
 </html>
